@@ -8,26 +8,32 @@ import java.nio.file.Paths;
 
 public class Testador {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-		String url = "C://STI";
+		/*
+		 * Caminho Grupos das Turmas
+		 */
+		String url = "\\\\10.18.3.215\\stream_1\\prod\\mp4";
+		
+		
+		/*
+		 * Caminho Grupos das Turmas
+		 */
+//		String url = "\\\\10.18.10.18\\grupos\\DIRATIC\\Alonso";
+		
+		
+		
+		
 
 		Path caminho = Paths.get(url);
 
 		System.out.println(Files.exists(caminho));
 		System.out.println(Files.isDirectory(caminho));
 
-		try {
+		DirectoryStream<Path> directoryStream = Files.newDirectoryStream(caminho);
 
-			DirectoryStream<Path> directoryStream = Files.newDirectoryStream(caminho);
-
-			for (Path cam : directoryStream) {
-				System.out.println(cam);
-			}
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (Path cam : directoryStream) {
+			System.out.println(cam);
 		}
 	}
 }
